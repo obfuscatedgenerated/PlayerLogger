@@ -6,7 +6,7 @@
 
     <groupId>ml.obfuscatedgenerated</groupId>
     <artifactId>PlayerLogger</artifactId>
-    <version>0.1.4-SNAPSHOT</version>
+    <version>0.1.4</version>
 
     <repositories>
         <repository>
@@ -41,7 +41,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <finalName>PlayerLogger</finalName>
+                    <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
