@@ -2,11 +2,10 @@ package ml.obfuscatedgenerated.PlayerLogger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -43,6 +42,20 @@ public class CommandGetLog implements CommandExecutor {
             } else {
                 p.sendMessage(ChatColor.RED+"You don't have permission to do that!");
             }
+        } else if (sender instanceof ConsoleCommandSender) {
+            ConsoleCommandSender c = (ConsoleCommandSender) sender;
+            String log = readLog();
+            if (log.contains("=== FLUSH ===")) {
+                log = log.substring(log.lastIndexOf("=== FLUSH ===") + 14);// add 14 to account for === FLUSH ===\n
+            }
+            c.sendMessage(log);
+        } else if (sender instanceof RemoteConsoleCommandSender) {
+            RemoteConsoleCommandSender r = (RemoteConsoleCommandSender) sender;
+            String log = readLog();
+            if (log.contains("=== FLUSH ===")) {
+                log = log.substring(log.lastIndexOf("=== FLUSH ===") + 14);// add 14 to account for === FLUSH ===\n
+            }
+            r.sendMessage(log);
         }
         return true;
     }

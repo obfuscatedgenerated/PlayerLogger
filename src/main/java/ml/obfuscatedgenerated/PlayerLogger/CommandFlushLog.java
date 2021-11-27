@@ -2,9 +2,7 @@ package ml.obfuscatedgenerated.PlayerLogger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -58,6 +56,14 @@ public class CommandFlushLog implements CommandExecutor {
             } else {
                 p.sendMessage(ChatColor.RED+"You don't have permission to do that!");
             }
+        } else if (sender instanceof ConsoleCommandSender) {
+            ConsoleCommandSender c = (ConsoleCommandSender) sender;
+            logToFile("=== FLUSH ===");
+            c.sendMessage("Added flush point.");
+        } else if (sender instanceof RemoteConsoleCommandSender) {
+            RemoteConsoleCommandSender r = (RemoteConsoleCommandSender) sender;
+            logToFile("=== FLUSH ===");
+            r.sendMessage("Added flush point.");
         }
         return true;
     }
