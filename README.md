@@ -15,3 +15,7 @@ Permission: PlayerLogger.get (default: op)
 Adds a flush point to the PlayerLog (to only show logs after it).
 
 Permission: PlayerLogger.flush (default: op)
+
+## Building from source
+
+`mvn package`
