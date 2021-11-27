@@ -1,6 +1,7 @@
 package ml.obfuscatedgenerated.PlayerLogger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,11 +34,15 @@ public class CommandGetLog implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            String log = readLog();
-            if (log.contains("=== FLUSH ===")) {
-                log = log.substring(log.lastIndexOf("=== FLUSH ===")+14);// add 14 to account for === FLUSH ===\n
+            if (p.hasPermission("PlayerLogger.get")) {
+                String log = readLog();
+                if (log.contains("=== FLUSH ===")) {
+                    log = log.substring(log.lastIndexOf("=== FLUSH ===") + 14);// add 14 to account for === FLUSH ===\n
+                }
+                p.sendMessage(log);
+            } else {
+                p.sendMessage(ChatColor.RED+"You don't have permission to do that!");
             }
-            p.sendMessage(log);
         }
         return true;
     }

@@ -1,6 +1,7 @@
 package ml.obfuscatedgenerated.PlayerLogger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -51,8 +52,12 @@ public class CommandFlushLog implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            logToFile("=== FLUSH ===");
-            p.sendMessage("Added flush point.");
+            if (p.hasPermission("PlayerLogger.flush")) {
+                logToFile("=== FLUSH ===");
+                p.sendMessage("Added flush point.");
+            } else {
+                p.sendMessage(ChatColor.RED+"You don't have permission to do that!");
+            }
         }
         return true;
     }

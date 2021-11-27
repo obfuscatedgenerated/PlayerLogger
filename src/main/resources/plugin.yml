@@ -5,10 +5,20 @@ main: ml.obfuscatedgenerated.PlayerLogger.PlayerLogger
 api-version: 1.17
 commands:
   getplayerlog:
-    description: Gets the player log.
+    description: Gets the PlayerLog.
     usage: /<command>
-    permission: PlayerLogger.get
   flushplayerlog:
-    description: Add a flush point to the player log (to only show logs after it)
+    description: Adds a flush point to the PlayerLog (to only show logs after it).
     usage: /<command>
-    permission: PlayerLogger.flush
+permissions:
+  PlayerLogger.*:
+    description: Grants all PlayerLogger permissions.
+    children:
+      PlayerLogger.get: true
+      PlayerLogger.flush: true
+  PlayerLogger.get:
+    description: Allows player to read the PlayerLog.
+    default: op
+  PlayerLogger.flush:
+    description: Allows player to add a flush point to the PlayerLog.
+    default: op
