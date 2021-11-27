@@ -7,4 +7,8 @@ commands:
   getplayerlog:
     description: Gets the player log.
     usage: /<command>
-    permission: PlayerLogger.getplayerlog
+    permission: PlayerLogger.get
+  flushplayerlog:
+    description: Add a flush point to the player log (to only show logs after it)
+    usage: /<command>
+    permission: PlayerLogger.flush

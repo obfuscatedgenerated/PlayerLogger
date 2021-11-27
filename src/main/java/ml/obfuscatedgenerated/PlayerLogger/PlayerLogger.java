@@ -56,6 +56,7 @@ public class PlayerLogger extends JavaPlugin implements Listener {
     public void onEnable() {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         this.getCommand("getplayerlog").setExecutor(new CommandGetLog());
+        this.getCommand("flushplayerlog").setExecutor(new CommandFlushLog());
     }
 
     @Override

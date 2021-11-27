@@ -33,9 +33,11 @@ public class CommandGetLog implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            // need to trim lines and add flush command
-            // use find newline and then pass index to substr
-            p.sendMessage(readLog());
+            String log = readLog();
+            if (log.contains("=== FLUSH ===")) {
+                log = log.substring(log.lastIndexOf("=== FLUSH ===")+14);// add 14 to account for === FLUSH ===\n
+            }
+            p.sendMessage(log);
         }
         return true;
     }
