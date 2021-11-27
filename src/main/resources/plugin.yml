@@ -1,5 +1,5 @@
 name: PlayerLogger
-version: 0.1.4
+version: ${project.version}
 author: obfuscatedgenerated
 main: ml.obfuscatedgenerated.PlayerLogger.PlayerLogger
 api-version: 1.17
