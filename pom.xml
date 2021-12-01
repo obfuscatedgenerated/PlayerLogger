@@ -6,7 +6,7 @@
 
     <groupId>ml.obfuscatedgenerated</groupId>
     <artifactId>PlayerLogger</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 
     <repositories>
         <repository>
